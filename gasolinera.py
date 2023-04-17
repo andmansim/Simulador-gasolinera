@@ -10,6 +10,7 @@
 #Tras terminar se va
 
 import threading
+import random
 
 '''
 Necesitamos: cola, cliente, gasolinera
@@ -34,5 +35,10 @@ class Cliente:
         self.id = id
         self.estado = None
         self.tiempo_total = 0
+        self.t_surtidor = random.randint(5, 10)
+        self.t_caja = 3
+    
+    def set_estado(self, nuevo):
+        self.estado = nuevo
         
         
