@@ -22,18 +22,18 @@ Necesitamos: cola, cliente, gasolinera
 
 
 class Cola:
-    def __ini__(self):
-        self.datos = []
+    def __init__(self):
+        self.items = []
     
     def encolar(self, x):
-        self.datos.append(x)
+        self.items.append(x)
         
     def desencolar(self):
-        try: return self.datos.pop(0)
+        try: return self.items.pop(0)
         except: raise ValueError('La cola está vacia')
         
     def vacia(self):
-        return self.datos == []
+        return self.items == []
 
 class Cliente(threading.Thread):
 
@@ -45,7 +45,7 @@ class Cliente(threading.Thread):
         self.tiempo_total = 0
         self.t_surtidor = random.randint(5, 10)
         self.t_caja = 3
-        q.encolar()
+
     def set_estado(self, nuevo):
         self.estado = nuevo
     
@@ -72,7 +72,7 @@ class Cliente(threading.Thread):
         self.llegada()
         self.gasolina()
         self.caja()
-        self.salir()
+        self.salida()
         
 
 q = Cola()
@@ -81,7 +81,7 @@ for i in range(50):
     c = Cliente(i) #creamos hilos
     q.encolar(c) #Añadimos a al cola
     
-for a in q.datos:
+for a in q.items:
     a.start()
 
 
