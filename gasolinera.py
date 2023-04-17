@@ -20,5 +20,9 @@ class Cola:
     
     def encolar(self, x):
         self.datos.append(x)
-    def 
+    def desencolar(self):
+        try: return self.datos.pop(0)
+        except: raise ValueError('La cola está vacia')
+    def vacia(self):
+        return self.datos == []
         
