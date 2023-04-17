@@ -34,6 +34,7 @@ class Cola:
 
 class Cliente(threading.Thread):
     
+    time.sleep(random.randint(0, 15))
     def __init__(self, id):
         super().__init__()
         self.id = id
