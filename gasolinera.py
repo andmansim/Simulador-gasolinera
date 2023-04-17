@@ -76,9 +76,12 @@ class Cliente(threading.Thread):
         
 
 q = Cola()
-num = 1
+
 for i in range(50):
-    c = Cliente(num)
-    num +=1
+    c = Cliente(i) #creamos hilos
+    q.encolar(c) #Añadimos a al cola
     
+for a in q.datos:
+    a.start()
+
 
