@@ -45,17 +45,22 @@ class Cliente(threading.Thread):
     
     def llegada(self):
         self.estado = 'Llego a la gasolinera'
+        print(f'El coche {self.id} ha llegado a la gasolinera')
         
     def gasolina(self):
         self.estado = 'Echando gasolina'
+        print(f'El coche {self.id} está echando gasolina')
         time.sleep(self.t_surtidor)
+        
         
     def caja(self):
         self.estado = 'Pagando'
+        print(f'El coche {self.id} está pagando')
         time.sleep(self.t_caja)
         
     def salida(self):
         self.estado= 'Se va'
+        print(f'El coche {self.id} se va')
         
     
         
