@@ -47,7 +47,7 @@ class Cliente(threading.Thread):
         self.estado = 'Llego a la gasolinera'
     def gasolina(self):
         self.estado = 'Echando gasolina'
-        time.sleep(self.t_surtidor/60)
+        time.sleep(self.t_surtidor)
     def caja(self):
         self.estado = 'Pagando'
         
