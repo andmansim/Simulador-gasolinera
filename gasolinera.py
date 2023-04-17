@@ -11,6 +11,7 @@
 
 import threading
 import random
+import time
 
 '''
 Necesitamos: cola, cliente, gasolinera
@@ -43,11 +44,15 @@ class Cliente(threading.Thread):
         self.estado = nuevo
     
     def llegada(self):
-        pass
+        self.estado = 'Llego a la gasolinera'
     def gasolina(self):
-        pass
+        self.estado = 'Echando gasolina'
+        time.sleep(self.t_surtidor/60)
     def caja(self):
-        pass
-    
+        self.estado = 'Pagando'
         
+    def salida(self):
+        self.estado= 'Se va'
+        
+    
         
