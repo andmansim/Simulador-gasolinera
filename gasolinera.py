@@ -18,6 +18,9 @@ import time
 '''
 Necesitamos: cola, cliente, gasolinera
 '''
+
+
+
 class Cola:
     def __ini__(self):
         self.datos = []
@@ -33,7 +36,7 @@ class Cola:
         return self.datos == []
 
 class Cliente(threading.Thread):
-    
+
     time.sleep(random.randint(0, 15))
     def __init__(self, id):
         super().__init__()
@@ -42,7 +45,7 @@ class Cliente(threading.Thread):
         self.tiempo_total = 0
         self.t_surtidor = random.randint(5, 10)
         self.t_caja = 3
-    
+        q.encolar()
     def set_estado(self, nuevo):
         self.estado = nuevo
     
@@ -71,5 +74,11 @@ class Cliente(threading.Thread):
         self.caja()
         self.salir()
         
+
+q = Cola()
+num = 1
+for i in range(50):
+    c = Cliente(num)
+    num +=1
     
-        
+
