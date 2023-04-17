@@ -8,6 +8,8 @@
 #Coche en el surtidor tarda entre 5 y 10 minutos
 #Después se va a pagar: se pone en la caja, solo hay 1, tarda 3 minutos
 #Tras terminar se va
+#Vista: empieza y sale
+#Controlador: 
 
 import threading
 import random
@@ -61,6 +63,12 @@ class Cliente(threading.Thread):
     def salida(self):
         self.estado= 'Se va'
         print(f'El coche {self.id} se va')
+        
+    def run(self):
+        self.llegada()
+        self.gasolina()
+        self.caja()
+        self.salir()
         
     
         
