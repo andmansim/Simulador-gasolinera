@@ -20,9 +20,19 @@ class Cola:
     
     def encolar(self, x):
         self.datos.append(x)
+        
     def desencolar(self):
         try: return self.datos.pop(0)
         except: raise ValueError('La cola está vacia')
+        
     def vacia(self):
         return self.datos == []
+
+class Cliente:
+    
+    def __init__(self, id):
+        self.id = id
+        self.estado = None
+        self.tiempo_total = 0
+        
         
