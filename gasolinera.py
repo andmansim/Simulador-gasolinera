@@ -37,11 +37,13 @@ class Cola:
 
 class Cliente(threading.Thread):
     global semaforo
-    time.sleep(random.randint(0, 15))
+    t = random.randint(0, 15)
+    time.sleep(t)
     def __init__(self, id):
         super().__init__()
         self.id = id
         self.estado = None
+
         self.tiempo_total = 0
         self.t_surtidor = random.randint(5, 10)
         self.t_caja = 3
@@ -71,15 +73,22 @@ class Cliente(threading.Thread):
         print(f'El coche {self.id} se va')
         semaforo.release() #aumentamos
         
+    def media(self):
+        self.tiempo_total = self.t_caja + self.t_surtidor + self.t
+        m = self.tiempo_total/3
+        print(f'El coche {self.id} ha tardado {m}')
+        
     def run(self):
         self.llegada()
         self.gasolina()
         self.caja()
         self.salida()
+        self.media()
         
 
 q = Cola()
 semaforo = threading.Semaphore(1) #cerrado
+
 for i in range(50):
     c = Cliente(i) #creamos hilos
     q.encolar(c) #Añadimos a al cola
