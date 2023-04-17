@@ -29,9 +29,10 @@ class Cola:
     def vacia(self):
         return self.datos == []
 
-class Cliente:
+class Cliente(threading.Thread):
     
     def __init__(self, id):
+        super().__init__()
         self.id = id
         self.estado = None
         self.tiempo_total = 0
@@ -40,5 +41,13 @@ class Cliente:
     
     def set_estado(self, nuevo):
         self.estado = nuevo
+    
+    def llegada(self):
+        pass
+    def gasolina(self):
+        pass
+    def caja(self):
+        pass
+    
         
         
