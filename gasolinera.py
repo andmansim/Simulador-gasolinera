@@ -45,11 +45,14 @@ class Cliente(threading.Thread):
     
     def llegada(self):
         self.estado = 'Llego a la gasolinera'
+        
     def gasolina(self):
         self.estado = 'Echando gasolina'
         time.sleep(self.t_surtidor)
+        
     def caja(self):
         self.estado = 'Pagando'
+        time.sleep(self.t_caja)
         
     def salida(self):
         self.estado= 'Se va'
