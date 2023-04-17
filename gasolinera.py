@@ -36,7 +36,7 @@ class Cola:
         return self.items == []
 
 class Cliente(threading.Thread):
-
+    global semaforo
     time.sleep(random.randint(0, 15))
     def __init__(self, id):
         super().__init__()
@@ -51,7 +51,9 @@ class Cliente(threading.Thread):
     
     def llegada(self):
         self.estado = 'Llego a la gasolinera'
+        
         print(f'El coche {self.id} ha llegado a la gasolinera')
+        semaforo.acquire()#Restamos y cerramos
         
     def gasolina(self):
         self.estado = 'Echando gasolina'
@@ -67,6 +69,7 @@ class Cliente(threading.Thread):
     def salida(self):
         self.estado= 'Se va'
         print(f'El coche {self.id} se va')
+        semaforo.release() #aumentamos
         
     def run(self):
         self.llegada()
@@ -76,7 +79,7 @@ class Cliente(threading.Thread):
         
 
 q = Cola()
-
+semaforo = threading.Semaphore(1) #cerrado
 for i in range(50):
     c = Cliente(i) #creamos hilos
     q.encolar(c) #Añadimos a al cola
